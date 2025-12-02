@@ -1,8 +1,8 @@
-package com.tlbb.fortune.calculator.core.algorithm;
+package com.fortune.calculator.core.algorithm;
 
-import com.tlbb.fortune.calculator.core.model.From;
-import com.tlbb.fortune.calculator.core.model.Route;
-import com.tlbb.fortune.calculator.core.model.To;
+import com.fortune.calculator.core.model.From;
+import com.fortune.calculator.core.model.Route;
+import com.fortune.calculator.core.model.To;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

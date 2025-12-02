@@ -1,11 +1,11 @@
-package com.tlbb.fortune.calculator.util;
+package com.fortune.calculator.util;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.tlbb.fortune.calculator.core.algorithm.CalculatorAlgorithm;
-import com.tlbb.fortune.calculator.core.algorithm.ROICalculator;
-import com.tlbb.fortune.calculator.core.model.From;
-import com.tlbb.fortune.calculator.core.model.Route;
+import com.fortune.calculator.core.algorithm.CalculatorAlgorithm;
+import com.fortune.calculator.core.algorithm.ROICalculator;
+import com.fortune.calculator.core.model.From;
+import com.fortune.calculator.core.model.Route;
 
 import java.util.HashMap;
 import java.util.List;

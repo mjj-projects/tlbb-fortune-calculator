@@ -1,4 +1,4 @@
-package com.tlbb.fortune.calculator.core.config;
+package com.fortune.calculator.core.config;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
