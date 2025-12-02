@@ -37,32 +37,34 @@ public class ROICalculator implements CalculatorAlgorithm {
             // 根据成本回报率计算最大收益路线
             while (true) {
                 List<To> tos = from.getTos();
-                int index = 0;
-                BigDecimal roi = BigDecimal.ZERO;
-                for (int i = 0; i < tos.size(); i++) {
-                    To to = tos.get(i);
-                    if (to.getRoi().compareTo(roi) > 0) {
-                        index = i;
-                        roi = to.getRoi();
-                    }
-                }
-                // 最大收益路线
-                To to = tos.get(index);
+                // 获取最大收益路线
+                To to = max(tos);
                 // 使用时间（路程时间+买/卖时间）
                 long usedTime = to.getTime() * 1000 + shipTime;
-                // 剩余时间，前往下一条最大收益路线时间是否充足
+                // 剩余时间
                 long remainingTime = totalTime - timer;
-                if (remainingTime >= usedTime) {
-                    // 充足，记录最大收益路线
-                    timer += usedTime;
-                    routes.add(new Route()
-                            .setCity(to.getCity())
-                            .setUsedTime(usedTime / 1000)
-                            .setRemainingTime((totalTime - timer) / 1000));
-                } else {
-                    // 不充足，记录一条能到达的最大收益路线
-
+                // 剩余时间不能到达最大收益路线，则前往剩余时间能到达的最大收益路线
+                if (remainingTime < usedTime) {
+                    int index = 0;
+                    BigDecimal roi = BigDecimal.ZERO;
+                    for (int i = 0; i < tos.size(); i++) {
+                        to = tos.get(i);
+                        if (to.getRoi().compareTo(roi) > 0) {
+                            index = i;
+                            roi = to.getRoi();
+                        }
+                    }
+                    // 获取最大收益路线
+                    to = tos.get(index);
+                    // 使用时间（路程时间+买/卖时间）
+                    usedTime = to.getTime() * 1000 + shipTime;
                 }
+                // 记录
+                timer += usedTime;
+                routes.add(new Route()
+                        .setCity(to.getCity())
+                        .setUsedTime(usedTime / 1000)
+                        .setRemainingTime((totalTime - timer) / 1000));
                 // 时间不足或没有下一条路线，则结束
                 if (totalTime <= timer || !maps.containsKey(to.getCity())) {
                     break;
@@ -73,6 +75,19 @@ public class ROICalculator implements CalculatorAlgorithm {
             return routes;
         }
         return Collections.emptyList();
+    }
+
+    private To max(List<To> tos) {
+        int index = 0;
+        BigDecimal roi = BigDecimal.ZERO;
+        for (int i = 0; i < tos.size(); i++) {
+            To to = tos.get(i);
+            if (to.getRoi().compareTo(roi) > 0) {
+                index = i;
+                roi = to.getRoi();
+            }
+        }
+        return tos.get(index);
     }
 
     public ROICalculator(String city, Long shipTime, Long totalTime, Map<String, From> maps) {
