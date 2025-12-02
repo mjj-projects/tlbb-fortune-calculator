@@ -11,7 +11,11 @@ public class Route {
      */
     private String city;
     /**
-     * 时间
+     * 使用时间
      */
-    private Integer time;
+    private Long usedTime;
+    /**
+     * 剩余时间
+     */
+    private Long remainingTime;
 }

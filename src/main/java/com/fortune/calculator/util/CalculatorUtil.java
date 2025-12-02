@@ -22,9 +22,10 @@ public class CalculatorUtil {
         for (From from : froms) {
             maps.put(from.getCity(), from);
         }
-        CalculatorAlgorithm algorithm = new ROICalculator("大理", maps);
+        long shipTime = 3000;
+        long totalTime = 900 * 1000;
+        CalculatorAlgorithm algorithm = new ROICalculator("大理", shipTime, totalTime, maps);
         List<Route> routes = algorithm.calculate();
-
-        System.out.println(routes);
+        System.out.println(gson.toJson(routes));
     }
 }
