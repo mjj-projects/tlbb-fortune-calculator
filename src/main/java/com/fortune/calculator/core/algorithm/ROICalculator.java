@@ -50,13 +50,19 @@ public class ROICalculator implements CalculatorAlgorithm {
                 To to = tos.get(index);
                 // 使用时间（路程时间+买/卖时间）
                 long usedTime = to.getTime() * 1000 + shipTime;
-                // 记时
-                timer += usedTime;
-                // 记录最大收益路线
-                routes.add(new Route()
-                        .setCity(to.getCity())
-                        .setUsedTime(usedTime / 1000)
-                        .setRemainingTime((totalTime - timer) / 1000));
+                // 剩余时间，前往下一条最大收益路线时间是否充足
+                long remainingTime = totalTime - timer;
+                if (remainingTime >= usedTime) {
+                    // 充足，记录最大收益路线
+                    timer += usedTime;
+                    routes.add(new Route()
+                            .setCity(to.getCity())
+                            .setUsedTime(usedTime / 1000)
+                            .setRemainingTime((totalTime - timer) / 1000));
+                } else {
+                    // 不充足，记录一条能到达的最大收益路线
+
+                }
                 // 时间不足或没有下一条路线，则结束
                 if (totalTime <= timer || !maps.containsKey(to.getCity())) {
                     break;
