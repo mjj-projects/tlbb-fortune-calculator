@@ -5,10 +5,6 @@
 # Maven
 target
 
-# Idea
-.idea
-*.iml
-
 # Compiled class file
 *.class
 
