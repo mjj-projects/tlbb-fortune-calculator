@@ -4,12 +4,15 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
+/**
+ * 地点
+ */
 @Data
-public class To {
+public class Location {
     /**
-     * 城市
+     * 名称
      */
-    private String city;
+    private String name;
     /**
      * 跑图数量
      */

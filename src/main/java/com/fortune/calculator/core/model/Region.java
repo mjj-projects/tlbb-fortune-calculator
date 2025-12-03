@@ -5,20 +5,20 @@ import lombok.Data;
 import java.util.List;
 
 /**
- * 地图
+ * 地区
  */
 @Data
-public class From {
+public class Region {
     /**
-     * 城市
+     * 名称
      */
-    private String city;
+    private String name;
     /**
      * 是否城市
      */
     private boolean isCity;
     /**
-     * 目的地
+     * 地点集合
      */
-    private List<To> tos;
+    private List<Location> locations;
 }
