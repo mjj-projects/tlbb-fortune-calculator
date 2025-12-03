@@ -11,6 +11,7 @@ public class CalculatorUtilTest {
     // 根据成本回报率计算路线
     public static void main(String[] args) {
         CalculatorConfig config = new CalculatorConfig()
+                .setShipTime(3L)
                 .setTotalTime(900L)
                 .setCites(Set.of("大理、苏州、洛阳"))
                 .setInitCapital(BigDecimal.valueOf(40000));
