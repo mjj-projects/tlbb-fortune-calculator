@@ -18,7 +18,11 @@ public class CalculatorConfig {
      */
     private BigDecimal initCapital;
     /**
+     * 买卖时间
+     */
+    private Long shipTime;
+    /**
      * 总时长
      */
-    private Integer totalTime;
+    private Long totalTime;
 }
