@@ -34,7 +34,7 @@ public class Location {
      */
     private BigDecimal sellPrice;
     /**
-     * 成本回报率
+     * 回报率
      */
     private BigDecimal roi;
     /**

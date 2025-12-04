@@ -22,31 +22,30 @@ public class Timer {
     /**
      * 已用时间
      */
-    private Long usedTime;
+    private Integer usedTime;
     /**
      * 剩余时间
      */
-    private Long remainingTime;
+    private Integer remainingTime;
     /**
-     * 记时器快照
+     * 路线
      */
-    private List<Timer> timers;
+    private List<Timer> routes;
 
-    public void setTimer(Long time) {
+    public void setTimer(Integer time) {
         this.usedTime += time;
         this.remainingTime -= time;
     }
 
-    public void setTimer(String name, Long time) {
-        this.name = name;
+    public void setTimer(Location location, Integer time) {
+        this.name = location.getName();
         this.usedTime += time;
         this.remainingTime -= time;
-        // 记录快照
         addTimer();
     }
 
     private void addTimer() {
-        this.timers.add(new Timer()
+        this.routes.add(new Timer()
                 .setName(this.name)
                 .setUsedTime(this.usedTime)
                 .setRemainingTime(this.remainingTime));
@@ -56,23 +55,22 @@ public class Timer {
         return this.remainingTime < 0;
     }
 
-    public int compareTo(long time) {
-        return this.remainingTime > time ? 1 : this.remainingTime == time ? 0 : -1;
+    public Integer compareTo(Integer time) {
+        return this.remainingTime.compareTo(time);
     }
 
-    public Timer(Long usedTime, Long remainingTime) {
+    public Timer(Integer usedTime, Integer remainingTime) {
         this.name = "";
         this.usedTime = usedTime;
         this.remainingTime = remainingTime;
-        this.timers = Collections.emptyList();
+        this.routes = Collections.emptyList();
     }
 
-    public Timer(String name, Long usedTime, Long remainingTime) {
+    public Timer(String name, Integer usedTime, Integer remainingTime) {
         this.name = name;
         this.usedTime = usedTime;
         this.remainingTime = remainingTime - usedTime;
-        this.timers = new ArrayList<>();
-        // 记录快照
+        this.routes = new ArrayList<>();
         addTimer();
     }
 }

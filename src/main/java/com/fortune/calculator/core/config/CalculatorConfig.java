@@ -1,28 +1,29 @@
 package com.fortune.calculator.core.config;
 
+import com.fortune.calculator.core.model.City;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
-import java.util.Set;
+import java.util.Map;
 
 @Data
 @Accessors(chain = true)
 public class CalculatorConfig {
     /**
-     * 城市
+     * 买卖时间
      */
-    private Set<String> cites;
+    private Integer shipTime;
+    /**
+     * 总时长
+     */
+    private Integer totalTime;
     /**
      * 初始资金
      */
     private BigDecimal initCapital;
     /**
-     * 买卖时间
+     * 城市
      */
-    private Long shipTime;
-    /**
-     * 总时长
-     */
-    private Long totalTime;
+    private Map<String, City> cites;
 }
