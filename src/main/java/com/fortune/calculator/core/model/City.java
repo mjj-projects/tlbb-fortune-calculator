@@ -8,7 +8,7 @@ import java.util.List;
  * 地区
  */
 @Data
-public class Region {
+public class City {
     /**
      * 名称
      */

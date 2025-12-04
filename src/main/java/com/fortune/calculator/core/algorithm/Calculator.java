@@ -4,7 +4,7 @@ import com.fortune.calculator.core.model.Timer;
 
 import java.util.List;
 
-public interface CalculatorAlgorithm {
+public interface Calculator {
 
-    List<Timer> calculate();
+    List<Timer> calculate(String city);
 }
