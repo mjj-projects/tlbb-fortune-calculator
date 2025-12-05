@@ -3,6 +3,7 @@ package com.fortune.calculator.core.algorithm;
 import com.fortune.calculator.core.config.CalculatorConfig;
 import com.fortune.calculator.core.model.City;
 import com.fortune.calculator.core.model.Location;
+import com.fortune.calculator.core.model.Route;
 import com.fortune.calculator.core.model.Timer;
 
 import java.math.BigDecimal;
@@ -18,7 +19,7 @@ public class MaxROICalculator implements Calculator {
     private final CalculatorConfig config;
 
     @Override
-    public List<Timer> calculate(String city) {
+    public List<Route> calculate(String city) {
         Map<String, City> cites = config.getCites();
         if (!cites.containsKey(city)) {
             return Collections.emptyList();
