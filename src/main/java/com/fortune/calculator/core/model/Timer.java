@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Timer {
     /**
      * 路线
      */
-    private List<Timer> routes;
+    private List<Route> routes;
 
     public void setTimer(Integer time) {
         this.usedTime += time;
@@ -41,12 +42,14 @@ public class Timer {
         this.name = location.getName();
         this.usedTime += time;
         this.remainingTime -= time;
-        addTimer();
+        BigDecimal roi = location.getRoi();
+        addTimer(roi);
     }
 
-    private void addTimer() {
-        this.routes.add(new Timer()
+    private void addTimer(BigDecimal roi) {
+        this.routes.add(new Route()
                 .setName(this.name)
+                .setRoi(roi)
                 .setUsedTime(this.usedTime)
                 .setRemainingTime(this.remainingTime));
     }
@@ -71,6 +74,6 @@ public class Timer {
         this.usedTime = usedTime;
         this.remainingTime = remainingTime - usedTime;
         this.routes = new ArrayList<>();
-        addTimer();
+        addTimer(BigDecimal.ZERO);
     }
 }
