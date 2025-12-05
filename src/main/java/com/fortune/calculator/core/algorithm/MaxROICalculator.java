@@ -32,7 +32,7 @@ public class MaxROICalculator implements Calculator {
             int durationTime = location.getTime() + shipTime;
             Integer result = timer.compareTo(durationTime);
             if (result <= 0) {
-                // 模拟路线计算最高总收益，返回最高收益地点
+                // 模拟路线，计算总收益最高路线
                 Timer newTimer = new Timer(timer.getUsedTime(), timer.getRemainingTime());
                 location = simulateRoute(locations, newTimer);
                 durationTime = location.getTime() + shipTime;
